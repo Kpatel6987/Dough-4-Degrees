@@ -11,10 +11,10 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 
-// import { AlertComponent } from './_directives/index';
+import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
-// import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { AuthenticationService } from './_services/authentication.service';
+import { AlertService } from './_services/alert.service';
 
  import { LoginComponent } from './login/login.component';
 // import { RegisterComponent } from './register/register.component';
@@ -27,7 +27,7 @@ const myFirebaseConfig = {
   authDomain: 'dough-4-degrees.firebaseapp.com',
   databaseURL: 'https://dough-4-degrees.firebaseio.com',
   storageBucket: 'dough-4-degrees.appspot.com',
-  messagingSenderId: '1016225529448'
+  //messagingSenderId: '1016225529448'
 }
 
 const myFirebaseAuthConfig = {
@@ -45,7 +45,7 @@ const myFirebaseAuthConfig = {
     ],
     declarations: [
         AppComponent,
-        // AlertComponent,
+        AlertComponent,
          LoginComponent,
         // RegisterComponent,
         NavbarComponent,
@@ -54,7 +54,7 @@ const myFirebaseAuthConfig = {
     ],
     providers: [
          AuthGuard,
-        // AlertService,
+        AlertService,
         AuthenticationService,
         // UserService,
 
