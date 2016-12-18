@@ -1,5 +1,4 @@
 ﻿import { Component } from '@angular/core';
-import { AngularFire } from 'angularfire2';
 
 @Component({
     selector: 'app',
@@ -7,10 +6,6 @@ import { AngularFire } from 'angularfire2';
 })
 
 export class AppComponent {
-    constructor(public af: AngularFire) { }
+    constructor() { }
 
-    login() {
-        this.af.auth.login({email: 'user@email.com', password: 'password'});
-        console.log("here");
-    }
 }

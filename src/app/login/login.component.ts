@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 //import { AlertService, AuthenticationService } from '../_services/index';
+import { AuthenticationService } from '../_services/authentication.service';
+import { AngularFire } from 'angularfire2';
 
 @Component({
     templateUrl: 'app/login/login.component.html'
@@ -15,7 +17,9 @@ export class LoginComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        //private authenticationService: AuthenticationService,
+        private authenticationService: AuthenticationService,
+        public af: AngularFire,
+
         //private alertService: AlertService
         ) { }
 
@@ -40,5 +44,7 @@ export class LoginComponent implements OnInit {
         //             this.loading = false;
         //         });
         //this.authenticationService.tempLogin(this.model.username, this.model.password);
+        this.authenticationService.login();
+        //this.af.auth.login({email: 'user@email.com', password: 'pass1word'});
     }
 }

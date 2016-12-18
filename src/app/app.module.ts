@@ -12,8 +12,9 @@ import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 
 // import { AlertComponent } from './_directives/index';
-// import { AuthGuard } from './_guards/index';
+import { AuthGuard } from './_guards/auth.guard';
 // import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AuthenticationService } from './_services/authentication.service';
 
  import { LoginComponent } from './login/login.component';
 // import { RegisterComponent } from './register/register.component';
@@ -52,9 +53,9 @@ const myFirebaseAuthConfig = {
         HomeComponent
     ],
     providers: [
-        // AuthGuard,
+         AuthGuard,
         // AlertService,
-        // AuthenticationService,
+        AuthenticationService,
         // UserService,
 
         // providers used to create fake backend

@@ -1,34 +1,35 @@
-import {Component, OnInit} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
     selector: 'navbar',
     styles: [],
-    templateUrl: 'app/navbar/navbar.component.html'
+    templateUrl: './navbar.component.html'
 })
 
 export class NavbarComponent {
-    // showNavBar: boolean = false;
+    showNavBar: boolean = false;
 
-    // constructor(
-    //     private authenticationService: AuthenticationService,
+     constructor(
+         private authenticationService: AuthenticationService,
     //     private router: Router
-    //     ) {
-    //     this.authenticationService.showNavBarEmitter.subscribe((mode)=>{
-    //         if (mode !== null) {
-    //           this.showNavBar = mode;
-    //         } else {
-    //             if (this.authenticationService.loggedIn()) {
-    //                 this.showNavBar = true;
-    //             }
-    //         }
-    //     });
+         ) {
+        this.authenticationService.showNavBarEmitter.subscribe((mode)=>{
+            if (mode !== null) {
+              this.showNavBar = mode;
+            } else {
+                if (this.authenticationService.loggedIn()) {
+                    this.showNavBar = true;
+                }
+            }
+        });
 
-    // }
+     }
 
-    // logout() {
-    //     this.authenticationService.showNavBar(false);
-    //     this.authenticationService.logout();
-    // }
+    logout() {
+         this.authenticationService.showNavBar(false);
+         this.authenticationService.logout();
+    }
 
 }
