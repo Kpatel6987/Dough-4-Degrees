@@ -16,18 +16,19 @@ import { AuthGuard } from './_guards/auth.guard';
 import { AuthenticationService } from './_services/authentication.service';
 import { AlertService } from './_services/alert.service';
 
- import { LoginComponent } from './login/login.component';
-// import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from 'app/navbar/navbar.component';
-import { MyTeamComponent } from './my-team/my-team.component';
 import { HomeComponent } from './home/home.component';
+import { MyTeamComponent } from './my-team/my-team.component';
+
+
 
 const myFirebaseConfig = {
   apiKey: 'AIzaSyD4iCKc3wiyBgy0x-LCDSDA39Wxg5IX26I',
   authDomain: 'dough-4-degrees.firebaseapp.com',
   databaseURL: 'https://dough-4-degrees.firebaseio.com',
-  storageBucket: 'dough-4-degrees.appspot.com',
-  //messagingSenderId: '1016225529448'
+  storageBucket: 'dough-4-degrees.appspot.com'
 }
 
 const myFirebaseAuthConfig = {
@@ -40,20 +41,20 @@ const myFirebaseAuthConfig = {
         BrowserModule,
         FormsModule,
         HttpModule,
-       routing,
+        routing,
         AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig)
     ],
     declarations: [
         AppComponent,
         AlertComponent,
-         LoginComponent,
-        // RegisterComponent,
+        LoginComponent,
+        RegisterComponent,
         NavbarComponent,
-        MyTeamComponent,
-        HomeComponent
+        HomeComponent,
+        MyTeamComponent     
     ],
     providers: [
-         AuthGuard,
+        AuthGuard,
         AlertService,
         AuthenticationService,
         // UserService,
