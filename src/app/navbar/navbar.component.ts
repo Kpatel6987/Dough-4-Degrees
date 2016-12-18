@@ -11,10 +11,8 @@ import { AuthenticationService } from '../_services/authentication.service';
 export class NavbarComponent {
     showNavBar: boolean = false;
 
-     constructor(
-         private authenticationService: AuthenticationService,
-    //     private router: Router
-         ) {
+     constructor( private authenticationService: AuthenticationService ) {
+
         this.authenticationService.showNavBarEmitter.subscribe((mode)=>{
             if (mode !== null) {
               this.showNavBar = mode;

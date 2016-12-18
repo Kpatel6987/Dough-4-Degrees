@@ -33,18 +33,18 @@ export class LoginComponent implements OnInit {
 
     login() {
         this.loading = true;
-        // this.authenticationService.login(this.model.username, this.model.password)
-        //     .subscribe(
-        //         data => {
-        //             this.authenticationService.showNavBar(true);
-        //             this.router.navigate([this.returnUrl]);
-        //         },
-        //         error => {
-        //             this.alertService.error(error);
-        //             this.loading = false;
-        //         });
-        //this.authenticationService.tempLogin(this.model.username, this.model.password);
-        this.authenticationService.login();
-        //this.af.auth.login({email: 'user@email.com', password: 'pass1word'});
+        this.authenticationService.login(this.model.email, this.model.password).then((res) => {
+            console.log(res);
+            if (res.provider === 4) {
+                this.authenticationService.showNavBar(true);
+                this.router.navigate(["/home"]);
+            } else {
+                //alert("error");
+                this.loading = false;
+            }
+        }).catch((err) => {
+            alert("error");
+            this.loading = false;
+        });
     }
 }
