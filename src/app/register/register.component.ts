@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
                 this.router.navigate(["/home"]);
             }
         }).catch((err) => {
-            this.alertService.error("Sorry. Incorrect email or password");
+            this.alertService.error(err);
             this.loading = false;
         });
     }
