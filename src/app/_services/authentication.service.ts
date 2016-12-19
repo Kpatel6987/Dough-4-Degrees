@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from 'rxjs/Observable';
-import { AngularFire, FirebaseAuth } from 'angularfire2';
+import { AngularFire, FirebaseAuth, FirebaseAuthState } from 'angularfire2';
 import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/map';
 
@@ -9,8 +9,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthenticationService {
 
-  private _showNavBar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
+  private _showNavBar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public showNavBarEmitter: Observable<boolean> = this._showNavBar.asObservable();
+
+  public isLoggedIn: boolean;
 
   constructor( 
     private af: AngularFire,
@@ -36,13 +38,30 @@ export class AuthenticationService {
   }
 
   loggedIn() {
-    this.af.auth.subscribe(auth => {
-      if (auth) {
-          return true;
-      } else {
-          return false;
-      }
-    });
+    // this.af.auth.subscribe(auth => {
+    //   if (auth) {
+    //       this.showNavBar(true);
+    //       return true;
+    //   } else {
+    //       return false;
+    //   }
+    // });
+    return this.auth
+      .take(1)
+      .map((authState: FirebaseAuthState) => !!authState)
+      .do(authenticated => {
+        if (!authenticated) this.showNavBar(false);
+        else this.showNavBar(true);
+      });
+      // this.af.auth.subscribe(user => {
+      //   if(user) {
+      //     this.isLoggedIn = true;
+      //   }
+      //   else {
+      //     this.isLoggedIn = false;
+      //   }
+      // });
+      // return this.isLoggedIn;
   }
 
   showNavBar(ifShow: boolean) {

@@ -18,11 +18,20 @@ export class AuthGuard implements CanActivate {
     ) { }
 
     canActivate(): Observable<boolean> {
-    return this.auth
-      .take(1)
-      .map((authState: FirebaseAuthState) => !!authState)
-      .do(authenticated => {
-        if (!authenticated) this.router.navigate(['/login']);
-      });
+        return this.auth
+        .take(1)
+        .map((authState: FirebaseAuthState) => !!authState)
+        .do(authenticated => {
+            if (!authenticated) this.router.navigate(['/login']);
+        });
   }
+
+//     canActivate() {
+//         console.log(this.authenticationService.loggedIn());
+//         if (this.authenticationService.loggedIn()) {
+//             return true;
+//         }
+//         this.router.navigate(['/login']);
+//         return false;
+//   }
 }
