@@ -22,7 +22,7 @@ export class AuthenticationService {
     var creds: any = {email: email, password: password};
     var res: Promise<any> = new Promise((resolve, reject) => {
       this.auth.login(creds).then(result => {
-        localStorage.setItem('currentUser', 'active');
+        localStorage.setItem('currentUser', result.uid);
         resolve(result);
       }).catch(err => {
         reject(err);
