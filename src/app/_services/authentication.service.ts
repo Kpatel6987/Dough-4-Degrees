@@ -22,7 +22,6 @@ export class AuthenticationService {
     var creds: any = {email: email, password: password};
     var res: Promise<any> = new Promise((resolve, reject) => {
       this.auth.login(creds).then(result => {
-        localStorage.setItem('currentUser', result.uid);
         resolve(result);
       }).catch(err => {
         reject(err);
@@ -32,16 +31,18 @@ export class AuthenticationService {
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
     this.af.auth.logout();
     this.router.navigate(["/login"]);
   }
 
   loggedIn() {
-    if (localStorage.getItem('currentUser')) {
-      return true;
-    }
-    return false;
+    this.af.auth.subscribe(auth => {
+      if (auth) {
+          return true;
+      } else {
+          return false;
+      }
+    });
   }
 
   showNavBar(ifShow: boolean) {
