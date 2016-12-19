@@ -4,9 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFire, FirebaseAuth, FirebaseAuthState } from 'angularfire2';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/take';
 
 @Injectable()
 export class AuthenticationService {
@@ -14,13 +11,17 @@ export class AuthenticationService {
   private _showNavBar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public showNavBarEmitter: Observable<boolean> = this._showNavBar.asObservable();
 
-  public isLoggedIn: boolean;
+  private authState;
 
   constructor( 
     private af: AngularFire,
     private router: Router,
     private auth: FirebaseAuth
-  ) { }
+  ) { 
+      auth.subscribe((state: FirebaseAuthState) => {
+          this.authState = state;          
+      }); 
+  }
 
   login(email: String, password: String) {
     var creds: any = {email: email, password: password};
@@ -40,13 +41,7 @@ export class AuthenticationService {
   }
 
   loggedIn() {
-    return this.auth
-      .take(1)
-      .map((authState: FirebaseAuthState) => !!authState)
-      .do(authenticated => {
-        if (!authenticated) this.showNavBar(false);
-        else this.showNavBar(true);
-      });
+    return this.authState !== null;
   }
 
   showNavBar(ifShow: boolean) {
