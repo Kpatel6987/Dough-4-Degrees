@@ -3,8 +3,10 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from 'rxjs/Observable';
 import { AngularFire, FirebaseAuth, FirebaseAuthState } from 'angularfire2';
 import { Router, ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/map';
 
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
 
 @Injectable()
 export class AuthenticationService {
@@ -38,14 +40,6 @@ export class AuthenticationService {
   }
 
   loggedIn() {
-    // this.af.auth.subscribe(auth => {
-    //   if (auth) {
-    //       this.showNavBar(true);
-    //       return true;
-    //   } else {
-    //       return false;
-    //   }
-    // });
     return this.auth
       .take(1)
       .map((authState: FirebaseAuthState) => !!authState)
@@ -53,15 +47,6 @@ export class AuthenticationService {
         if (!authenticated) this.showNavBar(false);
         else this.showNavBar(true);
       });
-      // this.af.auth.subscribe(user => {
-      //   if(user) {
-      //     this.isLoggedIn = true;
-      //   }
-      //   else {
-      //     this.isLoggedIn = false;
-      //   }
-      // });
-      // return this.isLoggedIn;
   }
 
   showNavBar(ifShow: boolean) {

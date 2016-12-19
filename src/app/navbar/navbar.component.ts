@@ -14,7 +14,6 @@ export class NavbarComponent {
      constructor( private authenticationService: AuthenticationService ) {
 
         this.authenticationService.showNavBarEmitter.subscribe((mode)=>{
-            console.log(this.authenticationService.loggedIn());
             if (mode !== null) {
               this.showNavBar = mode;
             } else {
