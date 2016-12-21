@@ -12,6 +12,7 @@ export class AuthenticationService {
   public showNavBarEmitter: Observable<boolean> = this._showNavBar.asObservable();
 
   private authState;
+  private uid;
 
   constructor( 
     private af: AngularFire,
@@ -27,6 +28,8 @@ export class AuthenticationService {
     var creds: any = {email: email, password: password};
     var res: Promise<any> = new Promise((resolve, reject) => {
       this.auth.login(creds).then(result => {
+        this.uid = result.uid;
+        console.log(result);
         resolve(result);
       }).catch(err => {
         reject(err);
@@ -46,6 +49,10 @@ export class AuthenticationService {
 
   showNavBar(ifShow: boolean) {
       this._showNavBar.next(ifShow);
+  }
+
+  getKey() {
+    return this.uid;
   }
 
 }
