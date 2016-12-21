@@ -17,7 +17,7 @@ export class MyTeamComponent  {
   model: any = { };
 
   private addNew: boolean = false;
-  private uid: string = this.authenticationService.getKey();
+  private uid: String = null;
 
   displayForm() {
     this.addNew = true;
@@ -28,6 +28,11 @@ export class MyTeamComponent  {
   }
 
   onSubmit() {
+    this.authenticationService.getKey().then((res) => {
+      this.contactsService.addContact(res, this.model.firstName, this.model.lastName, this.model.email, this.model.number, this.model.relationship);
+        }).catch((err) => {
+            console.log(err);
+        });
     this.contactsService.addContact(this.uid, this.model.firstName, this.model.lastName, this.model.email, this.model.number, this.model.relationship);
   }
 
