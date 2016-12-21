@@ -12,7 +12,6 @@ export class AuthenticationService {
   public showNavBarEmitter: Observable<boolean> = this._showNavBar.asObservable();
 
   private authState;
-  private uid;
 
   constructor( 
     private af: AngularFire,
@@ -21,9 +20,6 @@ export class AuthenticationService {
   ) { 
       auth.subscribe((state: FirebaseAuthState) => {
           this.authState = state;
-          if (state != null) {
-          this.uid = state.uid;  
-          } 
       }); 
   }
 
@@ -53,7 +49,12 @@ export class AuthenticationService {
   }
 
   getKey() {
-    return this.uid;
+    var res: Promise<any> = new Promise((resolve, reject) => {
+      this.auth.subscribe((state: FirebaseAuthState) => {
+        resolve(state.uid);
+      })
+    });
+    return(res);
   }
 
 }
