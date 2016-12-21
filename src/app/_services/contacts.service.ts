@@ -12,12 +12,8 @@ export class ContactsService {
   ) { }
 
   addContact(uid: String, firstName: String, lastName: String, email: String, number: String, relationship: String) {
-    const user = this.af.database.object('contacts/' + uid);
-    user.update({'firstName': firstName});
-    user.update({'lastName': lastName});
-    user.update({'email': email});
-    user.update({'number': number});
-    user.update({'relationship': relationship});
+    const user = this.af.database.list('contacts/' + uid);
+    user.push({'firstName': firstName, 'lastName': lastName, 'email': email, 'number': number, 'relationship': relationship});
   }
 
 }
