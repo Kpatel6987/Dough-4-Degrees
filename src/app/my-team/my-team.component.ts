@@ -11,4 +11,14 @@ export class MyTeamComponent  {
   constructor() { }
   model: any = { };
 
+  public addNew: boolean = false;
+
+  displayForm() {
+    this.addNew = true;
+  }
+
+  hideForm() {
+    this.addNew = false;
+  }
+
 }

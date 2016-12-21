@@ -1,7 +1,8 @@
 <div class="container">
-  <div  [hidden]="submitted">
-    <h1>Add New Contact</h1>
-    <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+  <button type="submit" class="btn btn-default" (click)="displayForm()">Add New Contact</button>
+  <div [hidden]="submitted">
+    <form (ngSubmit)="onSubmit()" *ngIf="addNew" #contactForm="ngForm">
+      <h3>Add New Contact</h3>
 
       <div class="form-group">
         <label for="firstName">First Name</label>
@@ -61,7 +62,7 @@
         </div>
       </div>
 
-
       <button type="submit" class="btn btn-default" [disabled]="!contactForm.form.valid">Submit</button>
+      <button type="submit" class="btn btn-default" (click)="hideForm()">Cancel</button>
     </form>
   </div>
