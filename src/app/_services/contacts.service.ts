@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseAuth } from 'angularfire2';
 import { Router, ActivatedRoute } from '@angular/router';
-<<<<<<< HEAD
 import { AuthenticationService } from './authentication.service';
-=======
->>>>>>> 7044b3d14dfa75c7c6c69a5e719d7af0eade1dc6
 
 @Injectable()
 export class ContactsService {
