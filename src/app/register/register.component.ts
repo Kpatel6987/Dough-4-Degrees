@@ -37,11 +37,6 @@ export class RegisterComponent implements OnInit {
             if (res.provider === 4) {
                 this.authenticationService.showNavBar(true);
                 this.router.navigate(["/home"]);
-
-                const user = this.af.database.object('users/' + res.uid);
-                user.update({'firstName': this.model.firstName});
-                user.update({'lastName': this.model.lastName});
-                user.update({'email': this.model.email});
             }
         }).catch((err) => {
             this.alertService.error(err);
