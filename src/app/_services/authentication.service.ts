@@ -20,8 +20,10 @@ export class AuthenticationService {
     private auth: FirebaseAuth
   ) { 
       auth.subscribe((state: FirebaseAuthState) => {
-          this.authState = state;   
-          this.uid = state.uid;   
+          this.authState = state;
+          if (state != null) {
+          this.uid = state.uid;  
+          } 
       }); 
   }
 
