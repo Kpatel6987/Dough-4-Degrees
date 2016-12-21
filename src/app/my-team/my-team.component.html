@@ -1,3 +1,55 @@
-<p>
-  my-team works!
-</p>
+<div class="container">
+  <div  [hidden]="submitted">
+    <h1>Add New Contact</h1>
+    <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName"
+               required
+               [(ngModel)]="model.firstName" name="firstName"
+               #firstName="ngModel" >
+        <div [hidden]="firstName.valid || firstName.pristine"
+             class="alert alert-danger">
+          First Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName"
+               required
+               [(ngModel)]="model.lastName" name="lastName"
+               #lastName="ngModel" >
+        <div [hidden]="lastName.valid || lastName.pristine"
+             class="alert alert-danger">
+          Last Name is required
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email"
+               required
+               [(ngModel)]="model.email" name="email"
+               #email="ngModel" >
+        <div [hidden]="email.valid || email.pristine"
+             class="alert alert-danger">
+          Email is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="number">Phone Number</label>  
+        <input type="text" class="form-control" id="number"
+               required
+               [(ngModel)]="model.number" name="number"
+               #number="ngModel" >
+        <div [hidden]="number.valid || number.pristine" class="alert alert-danger">
+          Phone Number is required
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-default" [disabled]="!contactForm.form.valid">Submit</button>
+    </form>
+  </div>
