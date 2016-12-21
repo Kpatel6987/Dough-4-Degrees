@@ -33,7 +33,6 @@ export class MyTeamComponent  {
         }).catch((err) => {
             console.log(err);
         });
-    this.contactsService.addContact(this.uid, this.model.firstName, this.model.lastName, this.model.email, this.model.number, this.model.relationship);
   }
 
 }
