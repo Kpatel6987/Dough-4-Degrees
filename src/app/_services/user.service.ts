@@ -15,6 +15,10 @@ export class UserService {
     var creds: any = {email: email, password: password};
     var res: Promise<any> = new Promise((resolve, reject) => {
       this.auth.createUser(creds).then(result => {
+        const user = this.af.database.object('users/' + result.uid);
+        user.update({'firstName': firstName});
+        user.update({'lastName': lastName});
+        user.update({'email': email});
         resolve(result);
       }).catch(err => {
         reject(err);
