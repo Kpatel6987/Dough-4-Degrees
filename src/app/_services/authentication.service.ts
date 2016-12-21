@@ -20,7 +20,8 @@ export class AuthenticationService {
     private auth: FirebaseAuth
   ) { 
       auth.subscribe((state: FirebaseAuthState) => {
-          this.authState = state;          
+          this.authState = state;   
+          this.uid = state.uid;   
       }); 
   }
 
@@ -28,8 +29,6 @@ export class AuthenticationService {
     var creds: any = {email: email, password: password};
     var res: Promise<any> = new Promise((resolve, reject) => {
       this.auth.login(creds).then(result => {
-        this.uid = result.uid;
-        console.log(result);
         resolve(result);
       }).catch(err => {
         reject(err);
