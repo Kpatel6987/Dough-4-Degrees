@@ -50,6 +50,18 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label for="relationship">Relationship to You</label>  
+        <input type="text" class="form-control" id="relationship"
+               required
+               [(ngModel)]="model.relationship" name="relationship"
+               #relationship="ngModel" >
+        <div [hidden]="relationship.valid || relationship.pristine" class="alert alert-danger">
+          Relationship is required
+        </div>
+      </div>
+
+
       <button type="submit" class="btn btn-default" [disabled]="!contactForm.form.valid">Submit</button>
     </form>
   </div>
