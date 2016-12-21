@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ContactsService } from '../_services/contacts.service'
+import { ContactsService } from '../_services/contacts.service';
+import { AuthenticationService } from '../_services/authentication.service';
 
 
 @Component({
@@ -10,11 +11,13 @@ import { ContactsService } from '../_services/contacts.service'
 export class MyTeamComponent  {
 
   constructor(
-    private contactsService: ContactsService
+    private contactsService: ContactsService,
+    private authenticationService: AuthenticationService
   ) { }
   model: any = { };
 
-  public addNew: boolean = false;
+  private addNew: boolean = false;
+  private uid: string = this.authenticationService.getKey();
 
   displayForm() {
     this.addNew = true;
@@ -25,7 +28,7 @@ export class MyTeamComponent  {
   }
 
   onSubmit() {
-    this.contactsService.addContact(this.model.firstName, this.model.lastName, this.model.email, this.model.number, this.model.relationship);
+    this.contactsService.addContact(uid, this.model.firstName, this.model.lastName, this.model.email, this.model.number, this.model.relationship);
   }
 
 }

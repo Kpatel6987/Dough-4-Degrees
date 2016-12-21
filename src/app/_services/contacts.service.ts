@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseAuth } from 'angularfire2';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from './authentication.service'
+import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class ContactsService {
