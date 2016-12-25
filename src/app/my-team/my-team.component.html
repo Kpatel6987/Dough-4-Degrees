@@ -66,3 +66,16 @@
       <button type="submit" class="btn btn-default" (click)="hideForm()">Cancel</button>
     </form>
   </div>
+  <div>
+    <ul>
+      <li *ngFor="let item of data | async">
+        <div class="md-list-item-text" layout="column">
+          <h3>{{ item.firstName }} {{item.lastName}}</h3>
+          <h4>{{item.relationship}}</h4>
+          <p>{{ item.email }}</p>
+          <p>{{ item.number }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
