@@ -24,7 +24,6 @@ export class MyTeamComponent  {
   private addNew: boolean = false;
   private uid: String = null;
   private data: FirebaseListObservable<any[]>;
-  private hey: String = "yo";
 
   ngOnInit() {
     this.loadTeam();
