@@ -39,16 +39,20 @@ export class MyTeamComponent  {
   }
 
   onSubmit() {
-    this.contactsService.addContact(this.uid, this.model.firstName, this.model.lastName, this.model.email, this.model.number, this.model.relationship);
-    this.alertService.success('Contact Added', true);
-    this.model = {};
-    this.addNew = false;
+    this.authenticationService.getKey().then((res) => {
+      this.contactsService.addContact(res, this.model.firstName, this.model.lastName, this.model.email, this.model.number, this.model.relationship);
+      this.alertService.success('Contact Added', true);
+      this.model = {};
+      this.addNew = false;
+    }).catch((err) => {
+      this.alertService.error(err);
+    });
   }
 
   loadTeam() {
     this.authenticationService.getKey().then((res) => {
       console.log(res);
-      this.data = this.af.database.list('contacts/'+ res + '/');
+      this.data = this.contactsService.getContacts(res);
 
       console.log(this.data);
     }).catch((err) => {

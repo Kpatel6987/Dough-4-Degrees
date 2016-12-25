@@ -12,12 +12,16 @@ import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from 'app/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { MyTeamComponent } from './my-team/my-team.component';
+import { MyTimelineComponent } from './my-timeline/my-timeline.component'
 
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthenticationService } from './_services/authentication.service';
 import { AlertService } from './_services/alert.service';
 import { UserService } from './_services/user.service';
 import { ContactsService } from './_services/contacts.service';
+import { ScholarshipService } from './_services/scholarship.service'
+
+import { CalendarModule } from 'angular2-calendar'
 
 const myFirebaseConfig = {
   apiKey: 'AIzaSyD4iCKc3wiyBgy0x-LCDSDA39Wxg5IX26I',
@@ -37,7 +41,8 @@ const myFirebaseAuthConfig = {
         FormsModule,
         HttpModule,
         routing,
-        AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig)
+        AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig),
+        CalendarModule.forRoot()
     ],
     declarations: [
         AppComponent,
@@ -46,7 +51,8 @@ const myFirebaseAuthConfig = {
         RegisterComponent,
         NavbarComponent,
         HomeComponent,
-        MyTeamComponent     
+        MyTeamComponent,
+        MyTimelineComponent
     ],
     providers: [
         AuthGuard,
@@ -54,6 +60,7 @@ const myFirebaseAuthConfig = {
         AuthenticationService,
         UserService,
         ContactsService,
+        ScholarshipService,
 
         BaseRequestOptions
     ],
