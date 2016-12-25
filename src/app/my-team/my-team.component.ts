@@ -4,7 +4,6 @@ import { AuthenticationService } from '../_services/authentication.service';
 import { AlertService } from '../_services/alert.service';
 import { AngularFire, FirebaseListObservable} from 'angularfire2';
 
-
 @Component({
   selector: 'app-my-team',
   templateUrl: './my-team.component.html',
@@ -12,6 +11,7 @@ import { AngularFire, FirebaseListObservable} from 'angularfire2';
 })
 export class MyTeamComponent  {
 
+  contacts: FirebaseListObservable<any>;
   constructor(
     private contactsService: ContactsService,
     private authenticationService: AuthenticationService,
@@ -39,14 +39,10 @@ export class MyTeamComponent  {
   }
 
   onSubmit() {
-    this.authenticationService.getKey().then((res) => {
-      this.contactsService.addContact(res, this.model.firstName, this.model.lastName, this.model.email, this.model.number, this.model.relationship);
-      this.alertService.success('Contact Added', true);
-      this.model = {};
-      this.addNew = false;
-        }).catch((err) => {
-            this.alertService.error(err);
-        });
+    this.contactsService.addContact(this.uid, this.model.firstName, this.model.lastName, this.model.email, this.model.number, this.model.relationship);
+    this.alertService.success('Contact Added', true);
+    this.model = {};
+    this.addNew = false;
   }
 
   loadTeam() {

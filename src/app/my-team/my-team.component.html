@@ -1,4 +1,29 @@
 <div class="container">
+
+  <div>
+    <h2>Current Contacts</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Relationship</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of data | async">
+          <td>{{ contact.firstName }}</td>
+          <td>{{ contact.lastName }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.number }}</td>
+          <td>{{ contact.relationship }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
   <button type="submit" class="btn btn-default" (click)="displayForm()">Add New Contact</button>
   <div [hidden]="submitted">
     <form (ngSubmit)="onSubmit()" *ngIf="addNew" #contactForm="ngForm">
@@ -65,17 +90,5 @@
       <button type="submit" class="btn btn-default" [disabled]="!contactForm.form.valid">Submit</button>
       <button type="submit" class="btn btn-default" (click)="hideForm()">Cancel</button>
     </form>
-  </div>
-  <div>
-    <ul>
-      <li *ngFor="let item of data | async">
-        <div class="md-list-item-text" layout="column">
-          <h3>{{ item.firstName }} {{item.lastName}}</h3>
-          <h4>{{item.relationship}}</h4>
-          <p>{{ item.email }}</p>
-          <p>{{ item.number }}</p>
-        </div>
-      </li>
-    </ul>
   </div>
 </div>
