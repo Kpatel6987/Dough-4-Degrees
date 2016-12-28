@@ -4,6 +4,7 @@ import { FormsModule }    from '@angular/forms';
 import { HttpModule, BaseRequestOptions } from '@angular/http';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { routing }        from './app.routing';
+import { CalendarModule } from 'angular2-calendar';
 
 import { AppComponent }  from './app.component';
 import { AlertComponent } from './_directives/alert.component';
@@ -13,6 +14,7 @@ import { NavbarComponent } from 'app/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { MyTeamComponent } from './my-team/my-team.component';
 import { MyTimelineComponent } from './my-timeline/my-timeline.component'
+import { MyItemsComponent } from './my-items/my-items.component'
 
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthenticationService } from './_services/authentication.service';
@@ -21,7 +23,6 @@ import { UserService } from './_services/user.service';
 import { ContactsService } from './_services/contacts.service';
 import { ScholarshipService } from './_services/scholarship.service'
 
-import { CalendarModule } from 'angular2-calendar'
 
 const myFirebaseConfig = {
   apiKey: 'AIzaSyD4iCKc3wiyBgy0x-LCDSDA39Wxg5IX26I',
@@ -52,7 +53,8 @@ const myFirebaseAuthConfig = {
         NavbarComponent,
         HomeComponent,
         MyTeamComponent,
-        MyTimelineComponent
+        MyTimelineComponent,
+        MyItemsComponent
     ],
     providers: [
         AuthGuard,
