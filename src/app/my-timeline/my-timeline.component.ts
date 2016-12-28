@@ -154,15 +154,11 @@ export class MyTimelineComponent  {
 
   loadScholarships() {
     this.authenticationService.getKey().then((res) => {
-      console.log(res);
       this.data = this.scholarshipService.getScholarship(res);
       
       this.data.forEach(element => {
-        console.log(element);
-        console.log(element.values().next())
 
         element.forEach(ele => {
-          console.log(ele.date);
 
           this.events.push({
             start: addDays(new Date(ele.date),1),
