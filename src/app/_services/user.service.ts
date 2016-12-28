@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseAuth } from 'angularfire2';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class UserService {
 
   constructor(
     private af: AngularFire,
-    private router: Router,
     private auth: FirebaseAuth
   ) { }
 

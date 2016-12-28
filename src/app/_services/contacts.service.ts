@@ -1,18 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseAuth, FirebaseListObservable } from 'angularfire2';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from './authentication.service';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Injectable()
 export class ContactsService {
 
   items: FirebaseListObservable<any>;
-  constructor(
-    private af: AngularFire,
-    private router: Router,
-    private auth: FirebaseAuth,
-    private authenticationService: AuthenticationService,
-  ) { }
+  constructor( private af: AngularFire ) { }
 
   addContact(uid: String, firstName: String, lastName: String, email: String, number: String, relationship: String) {
     const user = this.af.database.list('contacts/' + uid);

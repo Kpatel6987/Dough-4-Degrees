@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ContactsService } from '../_services/contacts.service';
 import { AuthenticationService } from '../_services/authentication.service';
 import { AlertService } from '../_services/alert.service';
@@ -9,7 +9,7 @@ import { AngularFire, FirebaseListObservable} from 'angularfire2';
   templateUrl: './my-team.component.html',
   styleUrls: ['./my-team.component.css']
 })
-export class MyTeamComponent  {
+export class MyTeamComponent implements OnInit  {
 
   contacts: FirebaseListObservable<any>;
   constructor(

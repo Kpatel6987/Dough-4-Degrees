@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
 import { ScholarshipService } from '../_services/scholarship.service'
 import { AlertService } from '../_services/alert.service';
@@ -44,7 +44,8 @@ const colors: any = {
   templateUrl: './my-timeline.component.html',
   styleUrls: ['./my-timeline.component.css']
 })
-export class MyTimelineComponent  {
+
+export class MyTimelineComponent implements OnInit  {
 
   constructor(
     private authenticationService: AuthenticationService,
