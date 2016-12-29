@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire } from 'angularfire2';
 
 @Injectable()
 export class ContactsService {
 
-  items: FirebaseListObservable<any>;
   constructor( private af: AngularFire ) { }
 
   addContact(uid: String, firstName: String, lastName: String, email: String, number: String, relationship: String) {

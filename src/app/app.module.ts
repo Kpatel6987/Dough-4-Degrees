@@ -21,7 +21,8 @@ import { AuthenticationService } from './_services/authentication.service';
 import { AlertService } from './_services/alert.service';
 import { UserService } from './_services/user.service';
 import { ContactsService } from './_services/contacts.service';
-import { ScholarshipService } from './_services/scholarship.service'
+import { ScholarshipService } from './_services/scholarship.service';
+import { ItemsService } from './_services/items.service';
 
 
 const myFirebaseConfig = {
@@ -63,6 +64,7 @@ const myFirebaseAuthConfig = {
         UserService,
         ContactsService,
         ScholarshipService,
+        ItemsService,
 
         BaseRequestOptions
     ],

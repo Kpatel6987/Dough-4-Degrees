@@ -1,16 +1,23 @@
-import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseAuth, FirebaseListObservable } from 'angularfire2';
+import { Injectable, Inject } from '@angular/core';
+import { FirebaseApp } from 'angularfire2';
 
 @Injectable()
-export class ContactsService {
+export class ItemsService {
 
-  items: FirebaseListObservable<any>;
-  constructor(
-    private af: AngularFire,
-    private auth: FirebaseAuth
-  ) { }
+  private storageRef;
 
-  addFile(uid: String) {}
+  constructor(@Inject(FirebaseApp) fireBaseApp: any) { 
+    this.storageRef = fireBaseApp.storage().ref();
+    //console.log(storageRef);
+  }
+
+  addFile(uid: String, file) {
+    console.log(uid);
+    console.log(file);
+    this.storageRef = this.storageRef.child('items/uid');
+    console.log(this.storageRef);
+    this.storageRef.put(file);
+  }
 
   getFiles(uid: String) {}
 
