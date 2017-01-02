@@ -58,7 +58,7 @@ export class MyTimelineComponent implements OnInit  {
   view: string = 'month';
   private addNew: boolean = false;
   private data: FirebaseListObservable<any[]>;
-
+  private uid: String;
 
   viewDate: Date = new Date();
 
@@ -144,17 +144,14 @@ export class MyTimelineComponent implements OnInit  {
   }
 
   onSubmit() {
-    this.authenticationService.getKey().then((res) => {
-      this.scholarshipService.addScholarship(res, this.model.date, this.model.name, this.model.information);
-      this.alertService.success('Scholarship Added', true);
-      this.addNew = false;
-    }).catch((err) => {
-      this.alertService.error(err);
-    });
+    this.scholarshipService.addScholarship(this.uid, this.model.date, this.model.name, this.model.information);
+    this.alertService.success('Scholarship Added', true);
+    this.addNew = false;
   }
 
   loadScholarships() {
     this.authenticationService.getKey().then((res) => {
+      this.uid = res;
       this.data = this.scholarshipService.getScholarship(res);
       
       this.data.forEach(element => {

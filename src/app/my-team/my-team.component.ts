@@ -11,7 +11,7 @@ import { AngularFire, FirebaseListObservable} from 'angularfire2';
 })
 export class MyTeamComponent implements OnInit  {
 
-  contacts: FirebaseListObservable<any>;
+  
   constructor(
     private contactsService: ContactsService,
     private authenticationService: AuthenticationService,
@@ -22,8 +22,8 @@ export class MyTeamComponent implements OnInit  {
   model: any = { };
 
   private addNew: boolean = false;
-  private uid: String = null;
-  private data: FirebaseListObservable<any[]>;
+  private uid: String;
+  private data: FirebaseListObservable<any>;
 
   ngOnInit() {
     this.loadTeam();
@@ -34,6 +34,7 @@ export class MyTeamComponent implements OnInit  {
   }
 
   hideForm() {
+    this.model = {};
     this.addNew = false;
   }
 
@@ -48,8 +49,6 @@ export class MyTeamComponent implements OnInit  {
     this.authenticationService.getKey().then((res) => {
       this.data = this.contactsService.getContacts(res);
       this.uid = res;
-    }).catch((err) => {
-      this.alertService.error(err);
     });
   }
 }

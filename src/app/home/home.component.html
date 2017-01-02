@@ -1,3 +1,5 @@
-<p>
-  home works!
+<h2>Upcoming Deadlines</h2>
+<p *ngFor="let scholarship of scholarships | async">
+  {{ scholarship.name }}
+  {{ scholarship.date }}
 </p>
