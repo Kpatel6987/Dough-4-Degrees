@@ -12,8 +12,8 @@ export class ItemsService {
   }
 
   addFile(uid: String, file) {
-    console.log(uid);
     console.log(file);
+    file = new FormData(file);
     this.storageRef = this.storageRef.child('items/uid');
     console.log(this.storageRef);
     this.storageRef.put(file);
