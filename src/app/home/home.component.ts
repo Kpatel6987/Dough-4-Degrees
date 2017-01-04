@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ScholarshipService } from '../_services/scholarship.service';
 import { AuthenticationService } from '../_services/authentication.service';
 import { FirebaseListObservable} from 'angularfire2';
 
 @Component({
-  selector: 'app-home',
+  encapsulation: ViewEncapsulation.Native,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
