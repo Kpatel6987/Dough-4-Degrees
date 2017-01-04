@@ -9,6 +9,7 @@ import { CalendarModule } from 'angular2-calendar';
 import { AppComponent }  from './app.component';
 import { AlertComponent } from './_directives/alert.component';
 import { LoginComponent } from './login/login.component';
+import { ResetComponent } from './reset/reset.component'
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from 'app/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -51,6 +52,7 @@ const myFirebaseAuthConfig = {
         AlertComponent,
         LoginComponent,
         RegisterComponent,
+        ResetComponent,
         NavbarComponent,
         HomeComponent,
         MyTeamComponent,
