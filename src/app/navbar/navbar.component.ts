@@ -4,7 +4,7 @@ import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
     selector: 'navbar',
-    styles: [],
+    styleUrls: ['./navbar.component.css'],
     templateUrl: './navbar.component.html'
 })
 
