@@ -11,7 +11,8 @@ import { AuthenticationService } from '../_services/authentication.service';
 export class NavbarComponent {
     showNavBar: boolean = false;
 
-     constructor( private authenticationService: AuthenticationService ) {
+     constructor( private authenticationService: AuthenticationService,
+     private router: Router, ) {
 
         this.authenticationService.showNavBarEmitter.subscribe((mode)=>{
             if (mode !== null) {
@@ -19,6 +20,8 @@ export class NavbarComponent {
             } else {
                 if (this.authenticationService.loggedIn()) {
                     this.showNavBar = true;
+                } else {
+                    this.showNavBar = false;
                 }
             }
         });
@@ -26,8 +29,8 @@ export class NavbarComponent {
      }
 
     logout() {
-         this.authenticationService.showNavBar(false);
          this.authenticationService.logout();
+         this.authenticationService.showNavBar(false);
     }
 
 }

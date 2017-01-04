@@ -12,6 +12,7 @@ export class AuthenticationService {
   public showNavBarEmitter: Observable<boolean> = this._showNavBar.asObservable();
 
   private authState;
+  private uid;
 
   constructor( 
     private af: AngularFire,
@@ -36,8 +37,8 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.af.auth.logout();
     this.router.navigate(["/login"]);
+    this.af.auth.logout();
   }
 
   loggedIn() {
@@ -51,7 +52,9 @@ export class AuthenticationService {
   getKey() {
     var res: Promise<any> = new Promise((resolve, reject) => {
       this.auth.subscribe((state: FirebaseAuthState) => {
-        resolve(state.uid);
+        if (state !== null) {
+          resolve(state.uid);
+        }
       })
     });
     return(res);
