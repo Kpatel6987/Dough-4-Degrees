@@ -79,7 +79,7 @@ export class MyTimelineComponent implements OnInit  {
 
   events: CalendarEvent[] = [];
 
-  activeDayIsOpen: boolean = true;
+  activeDayIsOpen: boolean = false;
 
 
   ngOnInit() {
