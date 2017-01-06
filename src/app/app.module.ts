@@ -14,8 +14,9 @@ import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from 'app/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { MyTeamComponent } from './my-team/my-team.component';
-import { MyTimelineComponent } from './my-timeline/my-timeline.component'
-import { MyItemsComponent } from './my-items/my-items.component'
+import { MyTimelineComponent } from './my-timeline/my-timeline.component';
+import { MyItemsComponent } from './my-items/my-items.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthenticationService } from './_services/authentication.service';
@@ -57,7 +58,8 @@ const myFirebaseAuthConfig = {
         HomeComponent,
         MyTeamComponent,
         MyTimelineComponent,
-        MyItemsComponent
+        MyItemsComponent,
+        MyAccountComponent
     ],
     providers: [
         AuthGuard,

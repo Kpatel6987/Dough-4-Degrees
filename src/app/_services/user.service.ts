@@ -39,4 +39,12 @@ export class UserService {
     return res;
   }
 
+  getUser(uid: string) {
+    return this.af.database.object('users/' + uid);
+  }
+
+  getLastName(uid: string) {
+    return this.af.database.object('users/' + uid + '/lastName');
+  }
+
 }
