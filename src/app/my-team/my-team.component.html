@@ -19,6 +19,7 @@
           <td>{{ contact.email }}</td>
           <td>{{ contact.number }}</td>
           <td>{{ contact.relationship }}</td>
+          <td><button type="button" class="btn btn-danger" (click)="removeContact(contact)">Remove</button>
         </tr>
       </tbody>
     </table>

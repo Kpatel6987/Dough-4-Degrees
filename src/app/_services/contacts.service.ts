@@ -15,4 +15,10 @@ export class ContactsService {
     return this.af.database.list('contacts/' + uid);
   }
 
+  removeContact(path) {
+    path = "/contacts/" + path;
+    var item = this.af.database.object(path);
+    item.remove();
+  }
+
 }

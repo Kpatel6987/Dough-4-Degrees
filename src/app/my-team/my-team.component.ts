@@ -45,6 +45,12 @@ export class MyTeamComponent implements OnInit  {
     this.addNew = false;
   }
 
+  removeContact(contact) {
+    var path = this.uid + "/" + contact.$key;
+    this.contactsService.removeContact(path);
+   
+  }
+
   loadTeam() {
     this.authenticationService.getKey().then((res) => {
       this.data = this.contactsService.getContacts(res);
