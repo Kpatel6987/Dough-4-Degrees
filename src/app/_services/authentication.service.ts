@@ -52,9 +52,9 @@ export class AuthenticationService {
   getKey() {
     var res: Promise<any> = new Promise((resolve, reject) => {
       this.auth.subscribe((state: FirebaseAuthState) => {
-        //if (state !== null) {
+        if (this.authState !== null) {
           resolve(state.uid);
-        //}
+        }
       })
     });
     return(res);
