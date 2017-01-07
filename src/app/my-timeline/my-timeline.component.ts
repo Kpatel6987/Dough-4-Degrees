@@ -134,11 +134,7 @@ export class MyTimelineComponent implements OnInit  {
   }
 
   displayForm() {
-    if (this.addNew) {
-      this.hideForm();
-    } else {
-      this.addNew = true;
-    }
+    this.addNew = true;
   }
 
   hideForm() {

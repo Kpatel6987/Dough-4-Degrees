@@ -22,7 +22,6 @@ export class MyTeamComponent implements OnInit  {
   model: any = { };
 
   emailPattern = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$";
-  numPattern= /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
   private addNew: boolean = false;
   private uid: String;
   private data: FirebaseListObservable<any>;
