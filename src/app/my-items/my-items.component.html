@@ -2,5 +2,6 @@
   my-items works!
 </p>
 <div>
-  <input type="file" (change)="onChange($event)"/>
+  <input #fileInput type="file"/>
+  <button type="button" (click)="submit()" class="btn btn-primary">Submit</button>
 </div>

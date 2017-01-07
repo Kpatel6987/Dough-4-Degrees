@@ -12,11 +12,9 @@ export class ItemsService {
   }
 
   addFile(uid: String, file) {
-    console.log(file);
-    file = new FormData(file);
-    this.storageRef = this.storageRef.child('items/uid');
-    console.log(this.storageRef);
-    this.storageRef.put(file);
+    var path = 'items/' + uid + "/" + file.name;
+    this.storageRef = this.storageRef.child(path);
+    let task = this.storageRef.put(file);
   }
 
   getFiles(uid: String) {}
