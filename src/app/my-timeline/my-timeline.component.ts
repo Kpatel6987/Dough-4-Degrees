@@ -116,9 +116,10 @@ export class MyTimelineComponent implements OnInit  {
     if (isSameMonth(date, this.viewDate)) {
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
+        (this.activeDayIsOpen === true && this.viewDate === date)
       ) {
         this.activeDayIsOpen = false;
+        this.viewDate = date;
       } else {
         this.activeDayIsOpen = true;
         this.viewDate = date;
