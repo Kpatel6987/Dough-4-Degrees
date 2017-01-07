@@ -21,6 +21,8 @@ export class MyTeamComponent implements OnInit  {
 
   model: any = { };
 
+  emailPattern = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$";
+  numPattern=/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
   private addNew: boolean = false;
   private uid: String;
   private data: FirebaseListObservable<any>;
@@ -30,7 +32,11 @@ export class MyTeamComponent implements OnInit  {
   }
 
   displayForm() {
-    this.addNew = true;
+    if (this.addNew) {
+      this.hideForm();
+    } else {
+      this.addNew = true;
+    }
   }
 
   hideForm() {
@@ -40,7 +46,7 @@ export class MyTeamComponent implements OnInit  {
 
   onSubmit() {
     this.contactsService.addContact(this.uid, this.model.firstName, this.model.lastName, this.model.email, this.model.number, this.model.relationship);
-    this.alertService.success('Contact Added', true);
+    this.alertService.success('Contact Added', false);
     this.model = {};
     this.addNew = false;
   }

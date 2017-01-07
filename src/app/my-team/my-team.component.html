@@ -59,21 +59,23 @@
         <input type="text" class="form-control" id="email"
                required
                [(ngModel)]="model.email" name="email"
-               #email="ngModel" >
+               #email="ngModel"
+               [pattern]="emailPattern">
         <div [hidden]="email.valid || email.pristine"
              class="alert alert-danger">
-          Email is required
+          Email is required and must be in the form <i>user@email.com</i>
         </div>
       </div>
 
       <div class="form-group">
         <label for="number">Phone Number</label>  
         <input type="text" class="form-control" id="number"
-               required
+               
                [(ngModel)]="model.number" name="number"
-               #number="ngModel" >
+               #number="ngModel" 
+               [pattern]="numPattern">
         <div [hidden]="number.valid || number.pristine" class="alert alert-danger">
-          Phone Number is required
+          Please enter a valid phone number
         </div>
       </div>
 
