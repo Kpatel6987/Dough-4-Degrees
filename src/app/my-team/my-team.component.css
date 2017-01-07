@@ -4,3 +4,31 @@
 .ng-invalid:not(form)  {
   border-left: 5px solid #a94442; /* red */
 }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+/* just some content with arbitrary styles for explanation purposes */
+.modal {
+    width: 400px;
+    height: auto;
+    position: auto;
+    top: auto; 
+    left: 50%;
+    margin-top: -100px;
+    margin-bottom: 100px;
+    margin-left: -150px;
+    background-color: #f1c40f;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 11; /* 1px higher than the overlay layer */
+    display: inline;
+    overflow: visible;
+}
