@@ -124,6 +124,7 @@ export class MyTimelineComponent implements OnInit  {
         this.date = date.getFullYear() + '-' + date.getMonth() + 1 + '-' + date.getDate();
         console.log(this.date);
       } else {
+        this.date = date.getFullYear() + '-' + date.getMonth() + 1 + '-' + date.getDate();
         this.activeDayIsOpen = true;
         this.viewDate = date;
       }
