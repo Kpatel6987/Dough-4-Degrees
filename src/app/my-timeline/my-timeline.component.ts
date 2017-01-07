@@ -99,15 +99,12 @@ export class MyTimelineComponent implements OnInit  {
   }
 
   decrement(): void {
-
     const subFn: any = {
       day: subDays,
       week: subWeeks,
       month: subMonths
     }[this.view];
-
     this.viewDate = subFn(this.viewDate, 1);
-
   }
 
   today(): void {
@@ -136,7 +133,11 @@ export class MyTimelineComponent implements OnInit  {
   }
 
   displayForm() {
-    this.addNew = true;
+    if (this.addNew) {
+      this.hideForm();
+    } else {
+      this.addNew = true;
+    }
   }
 
   hideForm() {
@@ -145,7 +146,7 @@ export class MyTimelineComponent implements OnInit  {
 
   onSubmit() {
     this.scholarshipService.addScholarship(this.uid, this.model.date, this.model.name, this.model.information);
-    this.alertService.success('Scholarship Added', true);
+    this.alertService.success('Scholarship Added', false);
     this.addNew = false;
   }
 

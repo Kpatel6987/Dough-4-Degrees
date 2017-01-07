@@ -46,7 +46,7 @@ export class MyTeamComponent implements OnInit  {
 
   onSubmit() {
     this.contactsService.addContact(this.uid, this.model.firstName, this.model.lastName, this.model.email, this.model.number, this.model.relationship);
-    this.alertService.success('Contact Added', true);
+    this.alertService.success('Contact Added', false);
     this.model = {};
     this.addNew = false;
   }

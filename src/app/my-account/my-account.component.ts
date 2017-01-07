@@ -9,34 +9,33 @@ import { AngularFire, FirebaseObjectObservable} from 'angularfire2';
   selector: 'app-my-account',
   templateUrl: './my-account.component.html'
 })
+
 export class MyAccountComponent implements OnInit {
 
   model: any = {};
-  private uid: String = null;
   user: FirebaseObjectObservable<any>;
 
   constructor(
     private authenticationService: AuthenticationService,
-    private userService: UserService
+    private userService: UserService,
+    private alertService: AlertService
     ) { 
         this.loadAccount();
     }
 
   ngOnInit() {
-    this.loadAccount();  
+    this.loadAccount();
   }
 
   submit() {
-      console.log(this.model.firstName);
       this.user.update({'firstName':this.model.firstName});
       this.user.update({'lastName':this.model.lastName});
+      this.alertService.success("Profile updated", false);
   }
 
   loadAccount() {
     this.authenticationService.getKey().then((res) => {
         this.user = this.userService.getUser(res);
-        console.log(this.user);
-        this.uid = res;
     });
   }
 
