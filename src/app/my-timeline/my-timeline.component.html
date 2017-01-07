@@ -61,10 +61,8 @@
 
             <div class="form-group">
                 <label for="date">Date (YYYY-MM-DD)</label>
-                <input type="text" class="form-control" id="date" data-uk-datepicker="{format:'DD.MM.YYYY'}"
-                    required
-                    [(ngModel)]="model.date" name="date"
-                    #date="ngModel" >
+                
+                <ng2-datepicker [(ngModel)]="model.date" name="date" #date="ngModel"></ng2-datepicker>
                 <div [hidden]="date.valid || date.pristine"
                     class="alert alert-danger">
                 Date is required

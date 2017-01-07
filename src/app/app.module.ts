@@ -4,7 +4,9 @@ import { FormsModule }    from '@angular/forms';
 import { HttpModule, BaseRequestOptions } from '@angular/http';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { routing }        from './app.routing';
+
 import { CalendarModule } from 'angular2-calendar';
+import { DatePickerModule } from 'ng2-datepicker';
 
 import { AppComponent }  from './app.component';
 import { AlertComponent } from './_directives/alert.component';
@@ -46,7 +48,8 @@ const myFirebaseAuthConfig = {
         HttpModule,
         routing,
         AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig),
-        CalendarModule.forRoot()
+        CalendarModule.forRoot(),
+        DatePickerModule
     ],
     declarations: [
         AppComponent,

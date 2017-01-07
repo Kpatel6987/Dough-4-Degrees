@@ -61,6 +61,7 @@ export class MyTimelineComponent implements OnInit  {
   private uid: String;
 
   viewDate: Date = new Date();
+  date: String = null;
 
   actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
@@ -120,6 +121,8 @@ export class MyTimelineComponent implements OnInit  {
       ) {
         this.activeDayIsOpen = false;
         this.viewDate = date;
+        this.date = date.getFullYear() + '-' + date.getMonth() + 1 + '-' + date.getDate();
+        console.log(this.date);
       } else {
         this.activeDayIsOpen = true;
         this.viewDate = date;
