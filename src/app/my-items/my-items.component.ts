@@ -47,7 +47,7 @@ export class MyItemsComponent implements OnInit {
 
   removeItem(item) {
     var path = this.uid + "/" + item.$key;
-    this.itemsService.removeItem(path);
+    this.itemsService.removeItem(path, item, this.uid);
     this.alertService.error(item.fileName + " removed", false);
   }
 
