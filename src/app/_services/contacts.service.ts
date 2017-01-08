@@ -7,8 +7,8 @@ export class ContactsService {
   constructor( private af: AngularFire ) { }
 
   addContact(uid: String, firstName: String, lastName: String, email: String, number: String, relationship: String) {
-    const user = this.af.database.list('contacts/' + uid);
-    user.push({'firstName': firstName, 'lastName': lastName, 'email': email, 'number': number, 'relationship': relationship});
+    const contacts = this.af.database.list('contacts/' + uid);
+    contacts.push({'firstName': firstName, 'lastName': lastName, 'email': email, 'number': number, 'relationship': relationship});
   }
 
   getContacts(uid: String) {
@@ -17,8 +17,8 @@ export class ContactsService {
 
   removeContact(path) {
     path = "/contacts/" + path;
-    var item = this.af.database.object(path);
-    item.remove();
+    var contact = this.af.database.object(path);
+    contact.remove();
   }
 
 }
