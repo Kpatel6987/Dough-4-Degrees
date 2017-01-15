@@ -147,8 +147,8 @@ export class MyTimelineComponent implements OnInit  {
   }
 
   onSubmit() {
-    this.scholarshipService.addScholarship(this.uid, this.model.date, this.model.name, this.model.information);
-    this.alertService.success('Scholarship Added', false);
+    this.scholarshipService.addScholarship(this.uid, this.model.date.formatted, this.model.name, this.model.information);
+    //this.alertService.success('Scholarship Added', false);
     this.addNew = false;
   }
 
