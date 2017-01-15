@@ -12,7 +12,7 @@ import { FirebaseListObservable} from 'angularfire2';
 export class HomeComponent implements OnInit {
 
   private uid: String;
-  private scholarships: FirebaseListObservable<any>;
+  private scholarships;
 
   constructor(
     private scholarshipService : ScholarshipService,
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.getKey().then((res) => {
       this.uid = res;
-      this.scholarships = this.scholarshipService.getScholarship(res);
+      this.scholarships = this.scholarshipService.getSortedScholarships(res);
     });
   }
 

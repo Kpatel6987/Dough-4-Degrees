@@ -1,7 +1,11 @@
-<p>
-  my-items works!
-</p>
 <div>
+  <h3>Current Files</h3>
+  <div *ngFor="let item of items | async">
+    <td>{{ item.fileName }}</td>
+    <td><button type="button" class="btn btn-danger" (click)="removeItem(item)">Remove</button></td>
+  </div>
+
   <input #fileInput type="file"/>
   <button type="button" (click)="submit()" class="btn btn-primary">Submit</button>
+
 </div>
