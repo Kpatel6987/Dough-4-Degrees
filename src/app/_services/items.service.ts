@@ -15,20 +15,13 @@ export class ItemsService {
     this.storageRef = fireBaseApp.storage().ref();
   }
 
-  addFile(uid: String, file) {
+  addFile(uid: String, file, label) {
     var path = 'items/' + uid + "/" + file.name;
     var storage = this.storageRef.child(path);
     storage.put(file).then(res =>
-      //this.getUrl(storage, uid, file)
       storage.getDownloadURL().then(url =>
-        this.addFileToDatabase(uid, file.name, url)
+        this.addFileToDatabase(uid, url, file.name, label)
       )
-    );
-  }
-
-  getUrl(storageRef, uid, file) {
-    this.storageRef.getDownloadURL().then(url =>
-      this.addFileToDatabase(uid, file.name, url)
     );
   }
 
@@ -43,9 +36,9 @@ export class ItemsService {
     
   }
 
-  addFileToDatabase(uid, fileName, url) {
+  addFileToDatabase(uid, url, fileName, label) {
     const items = this.af.database.list('items/' + uid);
-    items.push({'fileName': fileName, 'url': url});
+    items.push({'fileName': fileName, 'label': label, 'date': new Date().toString(), 'url': url});
   }
 
   getFiles(uid) {
@@ -59,5 +52,15 @@ export class ItemsService {
     var storage = this.storageRef.child('items/' + uid + "/" + item.fileName);
     storage.delete();
   }
+
+  downloadFile(file) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function(event) {
+      var blob = xhr.response;
+    };
+    xhr.open('GET', file.url);
+    xhr.send();
+    }
 
 }
