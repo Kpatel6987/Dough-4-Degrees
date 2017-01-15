@@ -61,7 +61,7 @@ export class MyTimelineComponent implements OnInit  {
   private uid: String;
 
   viewDate: Date = new Date();
-  date: String = null;
+  date: string = null;
 
   actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
