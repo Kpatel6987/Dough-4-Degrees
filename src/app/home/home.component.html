@@ -1,5 +1,17 @@
 <h2>Upcoming Deadlines</h2>
-<p *ngFor="let scholarship of scholarships | async">
-  {{ scholarship.name }}
-  {{ scholarship.date }}
-</p>
+<div class="grid grid-pad">
+  <a *ngFor="let scholarship of scholarships | async" [routerLink]="['/details', scholarship.$key]" class="col-1-4">
+    <div class="module">
+      <h4>{{ scholarship.name }}</h4>
+      <h5>{{ scholarship.date }}</h5>
+    </div>
+  </a>
+</div>
+
+<!--<div class="grid grid-pad">
+  <a *ngFor="let event of events | async" [routerLink]="['/events', event.$key]" class="col-1-4">
+    <div class="module">
+    <h4>{{ event.$key }}</h4>
+    </div>
+  </a>
+</div>-->

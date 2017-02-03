@@ -1,0 +1,4 @@
+<h2> {{ (scholarship | async)?.name }} </h2>
+<h3>Due Date: {{ (scholarship | async)?.date }}</h3>
+<h3>Information: {{ (scholarship | async)?.information }}</h3>
+<button type="submit" class="btn btn-danger pull-left" (click)="goBack()">Back</button>

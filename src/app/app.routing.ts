@@ -10,6 +10,7 @@ import { MyTeamComponent } from './my-team/my-team.component';
 import { MyTimelineComponent } from './my-timeline/my-timeline.component';
 import { MyItemsComponent } from './my-items/my-items.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { ScholarshipDetailsComponent } from './scholarship-details/scholarship-details.component';
 
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     { path: 'myitems', component: MyItemsComponent, canActivate: [AuthGuard]},
     { path: 'resetpass', component: ResetComponent },
     { path: 'myaccount', component: MyAccountComponent, canActivate: [AuthGuard]},
+    { path: 'details/:id', component: ScholarshipDetailsComponent, canActivate: [AuthGuard]},
     // otherwise redirect to home
     { path: '**', redirectTo: 'home', canActivate: [AuthGuard]}
 ];

@@ -47,4 +47,7 @@ export class ScholarshipService {
     });
   }
 
+  getScholarshipById(uid, key) {
+    return this.af.database.object('scholarships/' + uid + '/' + key);
+  }
 }

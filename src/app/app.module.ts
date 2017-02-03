@@ -27,6 +27,7 @@ import { UserService } from './_services/user.service';
 import { ContactsService } from './_services/contacts.service';
 import { ScholarshipService } from './_services/scholarship.service';
 import { ItemsService } from './_services/items.service';
+import { ScholarshipDetailsComponent } from './scholarship-details/scholarship-details.component';
 
 
 const myFirebaseConfig = {
@@ -62,7 +63,8 @@ const myFirebaseAuthConfig = {
         MyTeamComponent,
         MyTimelineComponent,
         MyItemsComponent,
-        MyAccountComponent
+        MyAccountComponent,
+        ScholarshipDetailsComponent
     ],
     providers: [
         AuthGuard,
