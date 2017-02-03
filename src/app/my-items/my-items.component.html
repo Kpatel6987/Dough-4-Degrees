@@ -1,11 +1,55 @@
 <div>
   <h3>Current Files</h3>
-  <div *ngFor="let item of items | async">
-    <td>{{ item.fileName }}</td>
-    <td><button type="button" class="btn btn-danger" (click)="removeItem(item)">Remove</button></td>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Label</th>
+        <th>File Name</th>
+        <th>Date Added</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items | async">
+        <td>{{ item.label }}</td>
+        <td>{{ item.fileName }}</td>
+        <td>{{ item.date | date}}</td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="downloadItem(item)">Download</button>
+          <button type="button" class="btn btn-danger" (click)="removeItem(item)">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="submit" class="btn btn-default" (click)="displayForm()">Add New Item</button>
+  <div class="overlay" *ngIf="addNew"></div>
+  <div class="modal" *ngIf="addNew">
+  <div [hidden]="submitted">
+    <form (ngSubmit)="onSubmit()" *ngIf="addNew" #itemForm="ngForm">
+      <h3>Add New Item</h3>
+
+      <div class="form-group">
+        <label for="label">Item Label</label>
+        <input type="text" class="form-control" id="label"
+               required
+               [(ngModel)]="model.label" name="label"
+               #label="ngModel" >
+        <div [hidden]="label.valid || label.pristine"
+             class="alert alert-danger">
+          Label is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input #fileInput type="file"/>
+      </div>
+      
+
+      
+
+      <button type="submit" class="btn btn-default" [disabled]="!itemForm.form.valid">Submit</button>
+      <button type="submit" class="btn btn-default" (click)="hideForm()">Cancel</button>
+    </form>
   </div>
-
-  <input #fileInput type="file"/>
-  <button type="button" (click)="submit()" class="btn btn-primary">Submit</button>
-
 </div>

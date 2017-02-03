@@ -152,13 +152,14 @@ export class MyTimelineComponent implements OnInit  {
   }
 
   hideForm() {
+    this.model = {};
     this.addNew = false;
   }
 
   onSubmit() {
     this.scholarshipService.addScholarship(this.uid, this.model.date.formatted, this.model.name, this.model.information);
-    //this.alertService.success('Scholarship Added', false);
-    this.addNew = false;
+    this.alertService.success('Scholarship Added', false);
+    this.hideForm();
   }
 
   loadScholarships() {

@@ -21,7 +21,7 @@ const appRoutes: Routes = [
     { path: 'resetpass', component: ResetComponent },
     { path: 'myaccount', component: MyAccountComponent, canActivate: [AuthGuard]},
     // otherwise redirect to home
-    { path: '**', redirectTo: 'home' }
+    { path: '**', redirectTo: 'home', canActivate: [AuthGuard]}
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

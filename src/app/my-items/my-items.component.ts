@@ -23,6 +23,22 @@ export class MyItemsComponent implements OnInit {
     private alertService: AlertService
     ) { }
 
+  model: any = { };
+  private addNew: boolean = false;
+
+  displayForm() {
+    if (this.addNew) {
+      this.hideForm();
+    } else {
+      this.addNew = true;
+    }
+  }
+
+  hideForm() {
+    this.model = {};
+    this.addNew = false;
+  }
+
   ngOnInit() {
     this.loadFiles();  
   }
@@ -34,14 +50,16 @@ export class MyItemsComponent implements OnInit {
     });
   }
 
-  submit() {
+  onSubmit() {
     var file = this.fileInputVar.nativeElement.files[0];
     if (file == null) {
+      this.addNew = false;
       this.alertService.error("Please choose a file", false);
     } else {
-      this.itemsService.addFile(this.uid, file);
+      this.itemsService.addFile(this.uid, file, this.model.label);
       this.alertService.success(file.name + " added", false);
       this.fileInputVar.nativeElement.value = "";
+      this.hideForm();
     }
   }
 
@@ -49,6 +67,10 @@ export class MyItemsComponent implements OnInit {
     var path = this.uid + "/" + item.$key;
     this.itemsService.removeItem(path, item, this.uid);
     this.alertService.error(item.fileName + " removed", false);
+  }
+
+  downloadItem(item) {
+    this.itemsService.downloadFile(item);
   }
 
 }
