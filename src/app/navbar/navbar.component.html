@@ -11,11 +11,11 @@
       <div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="">Home</a></li>
-            <li><a href="/myteam">My Team</a></li>
-            <li><a href="/myitems">My Items</a></li>
-            <li><a href="/mytimeline">My Timeline</a></li>
-            <li><a href="/myaccount">My Account</a></li>
+            <li><a [routerLink]="['']">Home</a></li>
+            <li><a [routerLink]="['/myteam']">My Team</a></li>
+            <li><a [routerLink]="['/myitems']">My Items</a></li>
+            <li><a [routerLink]="['/mytimeline']">My Timeline</a></li>
+            <li><a [routerLink]="['/myaccount']">My Account</a></li>
             <li><a class="btn btn-link" (click)="logout()">Logout</a></li>
           </ul>
         </div>
