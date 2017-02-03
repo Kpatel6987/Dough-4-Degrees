@@ -73,7 +73,16 @@ export class MyTimelineComponent implements OnInit  {
     onClick: ({event}: {event: CalendarEvent}): void => {
       this.events = this.events.filter(iEvent => iEvent !== event);
     }
+  }, {
+    label: '<a class="cal-event-title">',
+    onClick: ({event}: {event: CalendarEvent}): void => {
+      console.log('Edit event', event);
+    }
   }];
+
+  eventClicked({event}: {event: CalendarEvent}): void {
+    console.log('Event clicked', event);
+  }
 
   refresh: Subject<any> = new Subject();
 
