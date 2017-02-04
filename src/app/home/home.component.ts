@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   private uid: String;
   private scholarships;
+  private allScholarships: FirebaseListObservable<any>;
 
   constructor(
     private scholarshipService : ScholarshipService,
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
     this.authenticationService.getKey().then((res) => {
       this.uid = res;
       this.scholarships = this.scholarshipService.getSortedScholarships(res);
+      this.allScholarships = this.scholarshipService.getScholarship(res);
     });
   }
 
