@@ -12,7 +12,7 @@ export class ScholarshipService {
 
   addScholarship(uid: String, date: string, name: string, information: string) {
     const user = this.af.database.list('scholarships/' + uid);
-    user.update(name, {'date':date, 'name':name, 'information':information});    
+    user.update(name, {'date':date, 'name':name, 'information':information, 'status': 'In Progress'});    
   }
 
   getScholarship(uid: String) {
