@@ -4,7 +4,6 @@ import { AuthenticationService } from '../_services/authentication.service';
 import { FirebaseListObservable} from 'angularfire2';
 
 @Component({
-  encapsulation: ViewEncapsulation.Native,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
