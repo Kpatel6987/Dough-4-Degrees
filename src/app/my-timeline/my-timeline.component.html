@@ -23,11 +23,8 @@
                 <div class="btn btn-primary" (click)="view = 'week'" [class.active]="view === 'week'">Week</div>
                 <div class="btn btn-primary" (click)="view = 'day'" [class.active]="view === 'day'">Day</div>
             </div>
-            {{date}}
         </div>
-        {{date}}
     </div>
-    {{date}}
     <br>
     <div [ngSwitch]="view">
     <mwl-calendar-month-view
